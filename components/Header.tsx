@@ -26,15 +26,15 @@ const NavLink: React.FC<{ id: string; onScrollTo: (id: string) => void; children
 );
 
 const ThemeToggleButton: React.FC<{ darkMode: boolean; toggle: () => void; }> = ({ darkMode, toggle }) => (
-  <button onClick={toggle} aria-label="Toggle dark mode" className="w-9 h-9 flex items-center justify-center rounded-full text-blue-200 hover:bg-white/10 transition-colors">
+  <button onClick={toggle} aria-label="Toggle dark mode" className="w-8 h-8 flex items-center justify-center rounded-full text-blue-200 hover:bg-white/10 transition-colors">
     {darkMode ? (
-      // Sun Icon
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      // Sun Icon (smaller)
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
         <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 14.95l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414-1.414zM2 11a1 1 0 100-2H1a1 1 0 100 2h1zM4.343 5.657a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414z" clipRule="evenodd" />
       </svg>
     ) : (
-      // Moon Icon
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      // Moon Icon (smaller)
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
       </svg>
     )}
@@ -56,11 +56,11 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo, activeSection, darkMode, to
   return (
     <header className="sticky top-0 z-50 bg-primary-blue/95 backdrop-blur-md shadow-2xl dark:bg-dark-bg/95 dark:shadow-slate-900/50">
       <div className="container mx-auto px-5">
-        <div className="hidden sm:flex justify-end items-center text-xs text-blue-200 py-1.5 gap-4">
+        <div className="hidden sm:flex justify-end items-center text-xs text-blue-200 py-1 gap-3">
           <span>Licensed &amp; Insured Florida Roofing Contractor</span>
           <span>Emergency Storm Response • 24/7</span>
         </div>
-        <div className="flex items-center justify-between py-2 sm:py-3">
+        <div className="flex items-center justify-between py-1 sm:py-2">
           <button onClick={() => onScrollTo('top')} className="text-white">
             <Logo size="md" />
           </button>
@@ -91,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo, activeSection, darkMode, to
           <div className="flex gap-2 items-center">
             <a href="tel:+13059287663" className="hidden md:inline text-sm text-blue-200 font-medium hover:text-white transition-colors">(305) 928-7663</a>
             <ThemeToggleButton darkMode={darkMode} toggle={toggleDarkMode} />
-            <button onClick={() => onScrollTo('quote-form')} className="bg-transparent text-blue-100 border border-blue-300/80 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 ease-in-out hover:bg-accent-blue hover:text-primary-blue hover:shadow-lg hover:-translate-y-0.5 dark:border-blue-300/50 dark:hover:bg-blue-200">
+            <button onClick={() => onScrollTo('quote-form')} className="bg-transparent text-blue-100 border border-blue-300/80 rounded-full px-3 py-1 text-sm font-semibold transition-all duration-200 ease-in-out hover:bg-accent-blue hover:text-primary-blue hover:shadow-lg hover:-translate-y-0.5 dark:border-blue-300/50 dark:hover:bg-blue-200">
               Free Estimate
             </button>
           </div>
