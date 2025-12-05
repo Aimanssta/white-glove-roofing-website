@@ -8,6 +8,7 @@ interface HeaderProps {
   darkMode: boolean;
   toggleDarkMode: () => void;
   onBlogClick?: () => void;
+}
 
 const NavLink: React.FC<{ id: string; onScrollTo: (id: string) => void; children: React.ReactNode, isActive: boolean }> = ({ id, onScrollTo, children, isActive }) => (
   <li>
@@ -50,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo, activeSection, darkMode, to
     { id: 'areas', label: 'Service Areas' },
     { id: 'testimonials', label: 'Reviews' },
     { id: 'faq', label: 'FAQ' },
-    { id: 'blog', label: 'Blog', action: 'blog' },
+    { id: 'blog', label: 'Blog' },
   ];
   
   return (
