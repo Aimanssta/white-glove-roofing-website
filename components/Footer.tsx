@@ -4,9 +4,10 @@ import Logo from './Logo';
 
 interface FooterProps {
   onScrollTo: (id: string) => void;
+  onBlogClick?: () => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ onScrollTo }) => {
+const Footer: React.FC<FooterProps> = ({ onScrollTo, onBlogClick }) => {
   const year = new Date().getFullYear();
 
   const QuickLink: React.FC<{ id: string; children: React.ReactNode }> = ({ id, children }) => (
@@ -45,6 +46,9 @@ const Footer: React.FC<FooterProps> = ({ onScrollTo }) => {
               <QuickLink id="gallery">Our Work</QuickLink>
               <QuickLink id="areas">Service Areas</QuickLink>
               <QuickLink id="testimonials">Customer Reviews</QuickLink>
+              <li>
+                <button onClick={() => onBlogClick?.()} className="text-blue-200/80 hover:text-white transition-colors">Blog</button>
+              </li>
             </ul>
           </div>
         </div>

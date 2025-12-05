@@ -10,10 +10,14 @@ import ServiceAreas from './components/ServiceAreas';
 import Testimonials from './components/Testimonials';
 import FaqCta from './components/FaqCta';
 import Footer from './components/Footer';
+import BlogList from './components/BlogList';
+import BlogDetail from './components/BlogDetail';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('');
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
+  const [page, setPage] = useState<'home' | 'blog' | 'blog-detail'>('home');
+  const [blogSlug, setBlogSlug] = useState<string>('');
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     // Check for saved theme in localStorage or default to false (light mode)
     const savedMode = localStorage.getItem('darkMode');
@@ -37,6 +41,12 @@ const App: React.FC = () => {
   };
 
   const handleScrollTo = (id: string) => {
+    if (id === 'blog') {
+      setPage('blog');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    
     const element = document.getElementById(id);
     if (!element) return;
 
@@ -55,6 +65,21 @@ const App: React.FC = () => {
       // duration chosen to match CSS transition (600ms)
       setTimeout(() => setIsTransitioning(false), 600);
     }, 120);
+  };
+
+  const handleBlogClick = (slug?: string) => {
+    if (slug) {
+      setPage('blog-detail');
+      setBlogSlug(slug);
+    } else {
+      setPage('blog');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleGoHome = () => {
+    setPage('home');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const sectionIds = ['services', 'why-us', 'roof-types', 'gallery', 'areas', 'testimonials', 'faq'];
@@ -94,24 +119,28 @@ const App: React.FC = () => {
 
   return (
     <div className="bg-grey-light text-dark-text font-sans leading-relaxed dark:bg-dark-bg dark:text-dark-text-primary transition-colors duration-300 scroll-smooth">
-      <Header onScrollTo={handleScrollTo} activeSection={activeSection} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Header onScrollTo={handleScrollTo} activeSection={activeSection} darkMode={darkMode} toggleDarkMode={toggleDarkMode} onBlogClick={() => handleBlogClick()} />
       {/* Page transition overlay */}
       <div
         aria-hidden
         className={`fixed inset-0 pointer-events-none transition-opacity duration-500 ease-in-out ${isTransitioning ? 'opacity-100' : 'opacity-0'}`}
         style={{ background: darkMode ? 'rgba(3,7,18,0.6)' : 'rgba(255,255,255,0.85)', backdropFilter: 'blur(4px)' }}
       />
-      <main>
-        <Hero onScrollTo={handleScrollTo} />
-        <Services />
-        <WhyChooseUs onScrollTo={handleScrollTo} />
-        <RoofTypes />
-        <Gallery />
-        <ServiceAreas />
-        <Testimonials />
-        <FaqCta onScrollTo={handleScrollTo} />
-      </main>
-      <Footer onScrollTo={handleScrollTo} />
+      {page === 'home' && (
+        <main>
+          <Hero onScrollTo={handleScrollTo} />
+          <Services />
+          <WhyChooseUs onScrollTo={handleScrollTo} />
+          <RoofTypes />
+          <Gallery />
+          <ServiceAreas />
+          <Testimonials />
+          <FaqCta onScrollTo={handleScrollTo} />
+        </main>
+      )}
+      {page === 'blog' && <BlogList onArticleClick={handleBlogClick} />}
+      {page === 'blog-detail' && <BlogDetail slug={blogSlug} onBackClick={() => handleBlogClick()} onArticleClick={handleBlogClick} />}
+      <Footer onScrollTo={handleScrollTo} onBlogClick={() => handleBlogClick()} />
     </div>
   );
 };

@@ -7,7 +7,7 @@ interface HeaderProps {
   activeSection: string;
   darkMode: boolean;
   toggleDarkMode: () => void;
-}
+  onBlogClick?: () => void;
 
 const NavLink: React.FC<{ id: string; onScrollTo: (id: string) => void; children: React.ReactNode, isActive: boolean }> = ({ id, onScrollTo, children, isActive }) => (
   <li>
@@ -41,7 +41,7 @@ const ThemeToggleButton: React.FC<{ darkMode: boolean; toggle: () => void; }> = 
 );
 
 
-const Header: React.FC<HeaderProps> = ({ onScrollTo, activeSection, darkMode, toggleDarkMode }) => {
+const Header: React.FC<HeaderProps> = ({ onScrollTo, activeSection, darkMode, toggleDarkMode, onBlogClick }) => {
   const navItems = [
     { id: 'services', label: 'Services' },
     { id: 'why-us', label: 'Why Us' },
@@ -50,6 +50,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo, activeSection, darkMode, to
     { id: 'areas', label: 'Service Areas' },
     { id: 'testimonials', label: 'Reviews' },
     { id: 'faq', label: 'FAQ' },
+    { id: 'blog', label: 'Blog', action: 'blog' },
   ];
   
   return (
@@ -66,9 +67,24 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo, activeSection, darkMode, to
           <nav>
             <ul className="hidden lg:flex gap-6 list-none text-sm">
               {navItems.map(item => (
-                <NavLink key={item.id} id={item.id} onScrollTo={onScrollTo} isActive={activeSection === item.id}>
-                  {item.label}
-                </NavLink>
+                item.id === 'blog' ? (
+                  <li key={item.id}>
+                    <button
+                      onClick={() => onBlogClick?.()}
+                      className="relative pb-1 group transition-colors duration-200"
+                      aria-current={activeSection === item.id ? 'page' : undefined}
+                    >
+                      <span className={activeSection === item.id ? 'text-white font-semibold' : 'text-blue-100/90 group-hover:text-white'}>
+                        {item.label}
+                      </span>
+                      <span className={`absolute left-0 bottom-0 block h-0.5 bg-accent-blue transition-all duration-300 ${activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                    </button>
+                  </li>
+                ) : (
+                  <NavLink key={item.id} id={item.id} onScrollTo={onScrollTo} isActive={activeSection === item.id}>
+                    {item.label}
+                  </NavLink>
+                )
               ))}
             </ul>
           </nav>
