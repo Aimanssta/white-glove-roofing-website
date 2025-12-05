@@ -46,7 +46,7 @@ const Gallery: React.FC = () => {
     : galleryImages.filter(image => image.category === filter);
 
   return (
-    <section id="gallery" className="py-16 md:py-24 bg-grey-light dark:bg-dark-bg/50">
+    <section id="gallery" className="py-12 md:py-16 bg-grey-light dark:bg-dark-bg/50">
       <div className="container mx-auto px-5">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue dark:text-blue-300 mb-4">Our Work Showcase</h2>

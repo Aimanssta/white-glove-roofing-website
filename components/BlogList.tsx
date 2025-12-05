@@ -54,7 +54,7 @@ const BlogList: React.FC<BlogListProps> = ({ onArticleClick, onBackClick }) => {
   };
 
   return (
-    <section id="blog" className="py-16 md:py-24 bg-white dark:bg-dark-bg">
+    <section id="blog" className="py-12 md:py-16 bg-white dark:bg-dark-bg">
       <div className="container mx-auto px-5">
         {onBackClick && (
           <div className="mb-8">

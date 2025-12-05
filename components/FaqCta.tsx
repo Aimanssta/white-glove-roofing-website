@@ -32,7 +32,7 @@ const FaqCta: React.FC<FaqCtaProps> = ({ onScrollTo }) => {
   ];
 
   return (
-    <section id="faq" className="py-16 md:py-24 bg-accent-blue dark:bg-dark-bg">
+    <section id="faq" className="py-12 md:py-16 bg-accent-blue dark:bg-dark-bg">
       <div className="container mx-auto px-5">
         <div className="grid lg:grid-cols-[1.3fr,1fr] gap-12 items-start">
           <div>

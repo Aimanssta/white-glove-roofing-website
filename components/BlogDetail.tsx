@@ -53,7 +53,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ slug, onBackClick, onArticleCli
 
   if (loading) {
     return (
-      <section className="py-16 md:py-24 bg-white dark:bg-dark-bg">
+      <section className="py-12 md:py-16 bg-white dark:bg-dark-bg">
         <div className="container mx-auto px-5 text-center">
           <p className="text-grey-text dark:text-dark-text-secondary">Loading article...</p>
         </div>
@@ -63,7 +63,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ slug, onBackClick, onArticleCli
 
   if (!article) {
     return (
-      <section className="py-16 md:py-24 bg-white dark:bg-dark-bg">
+      <section className="py-12 md:py-16 bg-white dark:bg-dark-bg">
         <div className="container mx-auto px-5 text-center">
           <h2 className="text-2xl font-bold text-primary-blue dark:text-blue-300 mb-4">
             Article Not Found
@@ -85,7 +85,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ slug, onBackClick, onArticleCli
 
   return (
     <>
-      <article className="py-16 md:py-24 bg-white dark:bg-dark-bg">
+      <article className="py-12 md:py-16 bg-white dark:bg-dark-bg">
         <div className="container mx-auto px-5 max-w-3xl">
           {/* Breadcrumb */}
           <a
@@ -178,7 +178,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ slug, onBackClick, onArticleCli
 
       {/* Related Articles */}
       {relatedArticles.length > 0 && (
-        <section className="py-16 bg-grey-light dark:bg-dark-bg/50">
+        <section className="py-12 bg-grey-light dark:bg-dark-bg/50">
           <div className="container mx-auto px-5">
             <h2 className="text-3xl font-bold text-primary-blue dark:text-blue-300 mb-8 text-center">
               Related Articles

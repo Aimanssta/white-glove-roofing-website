@@ -7,7 +7,7 @@ interface WhyChooseUsProps {
 
 const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onScrollTo }) => {
   return (
-    <section id="why-us" className="py-16 md:py-24 bg-gradient-to-br from-primary-blue via-blue-800 to-primary-blue text-white dark:from-primary-blue/90 dark:via-blue-900/90 dark:to-dark-bg">
+    <section id="why-us" className="py-12 md:py-16 bg-gradient-to-br from-primary-blue via-blue-800 to-primary-blue text-white dark:from-primary-blue/90 dark:via-blue-900/90 dark:to-dark-bg">
       <div className="container mx-auto px-5">
         <div className="grid lg:grid-cols-[1.15fr,1fr] gap-12 items-center">
           <div>

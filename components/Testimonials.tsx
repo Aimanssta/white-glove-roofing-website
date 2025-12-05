@@ -61,7 +61,7 @@ const Testimonials: React.FC = () => {
   }, []);
 
   return (
-    <section id="testimonials" className="py-16 md:py-24 bg-white dark:bg-dark-bg">
+    <section id="testimonials" className="py-12 md:py-16 bg-white dark:bg-dark-bg">
       <div className="container mx-auto px-5">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-blue dark:text-blue-300 mb-4">What Customers Are Saying</h2>

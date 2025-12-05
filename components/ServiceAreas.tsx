@@ -15,7 +15,7 @@ const ServiceAreas: React.FC = () => {
   ];
 
   return (
-    <section id="areas" className="py-16 md:py-24 bg-accent-blue dark:bg-dark-bg">
+    <section id="areas" className="py-12 md:py-16 bg-accent-blue dark:bg-dark-bg">
       <div className="container mx-auto px-5">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
