@@ -32,7 +32,7 @@ const Testimonials: React.FC = () => {
   const [testimonialsData, setTestimonialsData] = useState<Review[]>([]);
 
   useEffect(() => {
-    fetch('/data/reviews.json')
+    fetch('/api/reviews')
       .then(res => res.json())
       .then((data: Review[]) => setTestimonialsData(data))
       .catch(() => {
