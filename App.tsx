@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('');
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     // Check for saved theme in localStorage or default to false (light mode)
     const savedMode = localStorage.getItem('darkMode');
@@ -37,17 +38,23 @@ const App: React.FC = () => {
 
   const handleScrollTo = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      // For the top, scroll to the very top of the document
+    if (!element) return;
+
+    // Start transition overlay
+    setIsTransitioning(true);
+
+    // Short delay to allow overlay to fade in, then scroll
+    setTimeout(() => {
       if (id === 'top') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        return;
+      } else {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    }
+
+      // Hide overlay after the scroll animation
+      // duration chosen to match CSS transition (600ms)
+      setTimeout(() => setIsTransitioning(false), 600);
+    }, 120);
   };
 
   const sectionIds = ['services', 'why-us', 'roof-types', 'gallery', 'areas', 'testimonials', 'faq'];
@@ -88,6 +95,12 @@ const App: React.FC = () => {
   return (
     <div className="bg-grey-light text-dark-text font-sans leading-relaxed dark:bg-dark-bg dark:text-dark-text-primary transition-colors duration-300">
       <Header onScrollTo={handleScrollTo} activeSection={activeSection} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      {/* Page transition overlay */}
+      <div
+        aria-hidden
+        className={`fixed inset-0 pointer-events-none transition-opacity duration-500 ease-in-out ${isTransitioning ? 'opacity-100' : 'opacity-0'}`}
+        style={{ background: darkMode ? 'rgba(3,7,18,0.6)' : 'rgba(255,255,255,0.85)', backdropFilter: 'blur(4px)' }}
+      />
       <main>
         <Hero onScrollTo={handleScrollTo} />
         <Services />
