@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import WhyChooseUs from './components/WhyChooseUs';
-import RoofTypes from './components/RoofTypes';
+// RoofTypes section repurposed to show blog list inside the home page
 import Gallery from './components/Gallery';
 import ServiceAreas from './components/ServiceAreas';
 import Testimonials from './components/Testimonials';
@@ -82,7 +82,7 @@ const App: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const sectionIds = ['services', 'why-us', 'roof-types', 'gallery', 'areas', 'testimonials', 'faq'];
+  const sectionIds = ['services', 'why-us', 'blog', 'gallery', 'areas', 'testimonials', 'faq'];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -131,7 +131,8 @@ const App: React.FC = () => {
           <Hero onScrollTo={handleScrollTo} />
           <Services />
           <WhyChooseUs onScrollTo={handleScrollTo} />
-          <RoofTypes />
+          {/* Replaced Florida Roofs section with the Blog list */}
+          <BlogList onArticleClick={handleBlogClick} onBackClick={handleGoHome} />
           <Gallery />
           <ServiceAreas />
           <Testimonials />

@@ -46,7 +46,6 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo, activeSection, darkMode, to
   const navItems = [
     { id: 'services', label: 'Services' },
     { id: 'why-us', label: 'Why Us' },
-    { id: 'roof-types', label: 'Florida Roofs' },
     { id: 'gallery', label: 'Our Work' },
     { id: 'areas', label: 'Service Areas' },
     { id: 'testimonials', label: 'Reviews' },
