@@ -17,9 +17,10 @@ type Article = {
 
 type BlogListProps = {
   onArticleClick: (slug: string) => void;
+  onBackClick?: () => void;
 };
 
-const BlogList: React.FC<BlogListProps> = ({ onArticleClick }) => {
+const BlogList: React.FC<BlogListProps> = ({ onArticleClick, onBackClick }) => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [filteredArticles, setFilteredArticles] = useState<Article[]>([]);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -55,6 +56,16 @@ const BlogList: React.FC<BlogListProps> = ({ onArticleClick }) => {
   return (
     <section id="blog" className="py-16 md:py-24 bg-white dark:bg-dark-bg">
       <div className="container mx-auto px-5">
+        {onBackClick && (
+          <div className="mb-8">
+            <button
+              onClick={onBackClick}
+              className="inline-flex items-center gap-2 text-primary-blue font-semibold hover:underline dark:text-blue-300 transition-colors"
+            >
+              ← Back to Home
+            </button>
+          </div>
+        )}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-primary-blue dark:text-blue-300 mb-4">
             Roofing Tips & Insights

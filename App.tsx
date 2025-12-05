@@ -138,7 +138,7 @@ const App: React.FC = () => {
           <FaqCta onScrollTo={handleScrollTo} />
         </main>
       )}
-      {page === 'blog' && <BlogList onArticleClick={handleBlogClick} />}
+      {page === 'blog' && <BlogList onArticleClick={handleBlogClick} onBackClick={handleGoHome} />}
       {page === 'blog-detail' && <BlogDetail slug={blogSlug} onBackClick={() => handleBlogClick()} onArticleClick={handleBlogClick} />}
       <Footer onScrollTo={handleScrollTo} onBlogClick={() => handleBlogClick()} />
     </div>
