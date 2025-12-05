@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 
 type Review = {
@@ -8,20 +7,33 @@ type Review = {
   text: string;
   ownerReply?: string;
   source?: string;
+  profileImage?: string;
 };
 
-const TestimonialCard: React.FC<Review> = ({ author, date, rating = 5, text, ownerReply }) => (
+const TestimonialCard: React.FC<Review> = ({ author, date, rating = 5, text, ownerReply, profileImage }) => (
   <article className="bg-grey-light rounded-2xl p-6 shadow-md h-full flex flex-col dark:bg-dark-card dark:shadow-slate-900/50">
-    <p className="text-base text-dark-text flex-grow dark:text-dark-text-primary">“{text}”</p>
+    <p className="text-base text-dark-text flex-grow dark:text-dark-text-primary">"{text}"</p>
     {ownerReply && (
       <div className="mt-3 p-3 bg-white/60 rounded text-sm text-grey-text dark:bg-slate-800 dark:text-dark-text-secondary">
         <strong className="text-primary-blue">Owner reply:</strong> {ownerReply}
       </div>
     )}
-    <div className="mt-4 pt-4 border-t border-blue-200/50 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm gap-2">
-      <div>
-        <span className="font-bold text-primary-blue dark:text-blue-300">{author}</span>
-        {date && <span className="text-grey-text font-normal dark:text-dark-text-secondary"> • {date}</span>}
+    <div className="mt-4 pt-4 border-t border-blue-200/50 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm gap-3">
+      <div className="flex items-center gap-3">
+        {profileImage && (
+          <img
+            src={profileImage}
+            alt={author}
+            className="w-10 h-10 rounded-full object-cover"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = 'https://via.placeholder.com/40';
+            }}
+          />
+        )}
+        <div>
+          <span className="font-bold text-primary-blue dark:text-blue-300 block">{author}</span>
+          {date && <span className="text-grey-text font-normal dark:text-dark-text-secondary text-xs">{date}</span>}
+        </div>
       </div>
       <div className="text-yellow-500">{Array.from({ length: rating }).map((_, i) => '★').join('')}</div>
     </div>
