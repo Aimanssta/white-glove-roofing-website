@@ -93,7 +93,7 @@ const App: React.FC = () => {
 
 
   return (
-    <div className="bg-grey-light text-dark-text font-sans leading-relaxed dark:bg-dark-bg dark:text-dark-text-primary transition-colors duration-300">
+    <div className="bg-grey-light text-dark-text font-sans leading-relaxed dark:bg-dark-bg dark:text-dark-text-primary transition-colors duration-300 scroll-smooth" style={{ scrollSnapType: 'y mandatory' }}>
       <Header onScrollTo={handleScrollTo} activeSection={activeSection} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       {/* Page transition overlay */}
       <div
@@ -101,15 +101,31 @@ const App: React.FC = () => {
         className={`fixed inset-0 pointer-events-none transition-opacity duration-500 ease-in-out ${isTransitioning ? 'opacity-100' : 'opacity-0'}`}
         style={{ background: darkMode ? 'rgba(3,7,18,0.6)' : 'rgba(255,255,255,0.85)', backdropFilter: 'blur(4px)' }}
       />
-      <main>
-        <Hero onScrollTo={handleScrollTo} />
-        <Services />
-        <WhyChooseUs onScrollTo={handleScrollTo} />
-        <RoofTypes />
-        <Gallery />
-        <ServiceAreas />
-        <Testimonials />
-        <FaqCta onScrollTo={handleScrollTo} />
+      <main style={{ display: 'flex', flexDirection: 'column' }}>
+        <section style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <Hero onScrollTo={handleScrollTo} />
+        </section>
+        <section id="services" style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+          <Services />
+        </section>
+        <section id="why-us" style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+          <WhyChooseUs onScrollTo={handleScrollTo} />
+        </section>
+        <section id="roof-types" style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+          <RoofTypes />
+        </section>
+        <section id="gallery" style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+          <Gallery />
+        </section>
+        <section id="areas" style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+          <ServiceAreas />
+        </section>
+        <section id="testimonials" style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+          <Testimonials />
+        </section>
+        <section id="faq" style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+          <FaqCta onScrollTo={handleScrollTo} />
+        </section>
       </main>
       <Footer onScrollTo={handleScrollTo} />
     </div>
