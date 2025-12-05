@@ -35,7 +35,7 @@ const Services: React.FC = () => {
       description: "Fast, precise roof repairs that stop leaks before they become major interior damage — with materials rated for Florida’s sun, salt air, and heavy rain.",
       items: ["Leak detection & targeted repairs", "Hurricane & tropical storm damage fixes", "Shingle, tile, and flat roof repairs", "Emergency tarping & temporary protection"],
       footnote: "Ideal for isolated issues, minor storm damage, and extending the life of your existing roof.",
-      imageUrl: "https://images.unsplash.com/photo-1564790533-533d31b34e5a?q=80&w=400&auto=format&fit=crop"
+      imageUrl: "/images/roof-shingles-installation-hialeah-fl.webp"
     },
     {
       label: "Roof Replacement",
@@ -43,7 +43,7 @@ const Services: React.FC = () => {
       description: "Upgrade to a Miami-ready roofing system that meets or exceeds Florida Building Code and is designed to stand up to coastal storms and high UV exposure.",
       items: ["Architectural shingles, tile, metal & flat systems", "Wind-mitigation fastening & underlayments", "Energy-efficient, heat-reflective options", "Manufacturer-backed warranties available"],
       footnote: "Recommended for aging roofs, repeated leaks, or homeowners seeking higher wind ratings.",
-      imageUrl: "https://images.unsplash.com/photo-1603248234814-725a34033d59?q=80&w=400&auto=format&fit=crop"
+      imageUrl: "/images/gallery-11.webp"
     },
     {
       label: "New Construction",
@@ -51,7 +51,7 @@ const Services: React.FC = () => {
       description: "Partner with us for new construction projects to ensure your new build is topped with a durable, code-compliant, and perfectly installed roofing system.",
       items: ["Collaboration with general contractors", "Blueprint analysis & material selection", "Code-compliant structural work", "Full system installation from decking to finishing"],
       footnote: "Perfect for new home builds, additions, and custom construction projects in Miami.",
-      imageUrl: "https://images.unsplash.com/photo-1571016298135-a22138ae2b1b?q=80&w=400&auto=format&fit=crop"
+      imageUrl: "/images/gallery-14.webp"
     },
     {
       label: "Maintenance",
@@ -59,7 +59,7 @@ const Services: React.FC = () => {
       description: "Proactive roof maintenance plans designed for Florida’s climate help you catch issues early, protect warranties, and prepare for hurricane season.",
       items: ["Annual & pre-storm roof inspections", "Debris removal & drainage cleaning", "Sealant, flashing & penetration checks", "Photo documentation for insurance records"],
       footnote: "Great for HOAs, investors, and owners looking to protect property value in Miami’s market.",
-      imageUrl: "https://images.unsplash.com/photo-1620052940222-3864a38e814a?q=80&w=400&auto=format&fit=crop"
+      imageUrl: "/images/gallery-7.webp"
     },
   ];
 

@@ -22,8 +22,6 @@ const galleryImages = [
   { src: '/images/gallery-18.webp', category: 'repair', alt: 'Roof repair project' },
   { src: '/images/gallery-19.webp', category: 'replacement', alt: 'Roof replacement project' },
   { src: '/images/gallery-20.webp', category: 'commercial', alt: 'Commercial roof project' },
-  { src: '/images/roof-shingles-installation-hialeah-fl.webp', category: 'replacement', alt: 'Roof shingles installation in Hialeah, FL' },
-  { src: '/images/newly-insyalled-roof-tiles-hialeah-fl.webp', category: 'replacement', alt: 'Newly installed roof tiles in Hialeah, FL' },
 ];
 
 const FilterButton: React.FC<{ label: string; isActive: boolean; onClick: () => void; }> = ({ label, isActive, onClick }) => (

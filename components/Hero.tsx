@@ -28,8 +28,8 @@ const Hero: React.FC<HeroProps> = ({ onScrollTo }) => {
   };
   
   return (
-    <section id="top" className="relative text-white py-16 md:py-20 lg:py-24 bg-cover bg-center" style={{ backgroundImage: "url('/images/homepage-roof.jpg')" }}>
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-100/80 via-blue-300/90 to-primary-blue/95 dark:from-blue-900/80 dark:via-blue-800/90 dark:to-primary-blue/95"></div>
+    <section id="top" className="relative text-white py-16 md:py-20 lg:py-24 bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('/images/newly-insyalled-roof-tiles-hialeah-fl.webp')", backgroundAttachment: 'fixed' }}>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/70 via-blue-800/75 to-black/80 dark:from-blue-900/80 dark:via-blue-800/90 dark:to-primary-blue/95"></div>
       <div className="container mx-auto px-5 relative">
         <div className="grid lg:grid-cols-[1.3fr,1fr] gap-10 items-center">
           <div className="text-center lg:text-left">
