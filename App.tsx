@@ -40,6 +40,10 @@ const App: React.FC = () => {
     setDarkMode(!darkMode);
   };
 
+  // Fixed header/footer heights used to ensure each page fills the viewport
+  const HEADER_HEIGHT = '64px';
+  const FOOTER_HEIGHT = '72px';
+
   const handleScrollTo = (id: string) => {
     if (id === 'blog') {
       setPage('blog');
@@ -127,7 +131,7 @@ const App: React.FC = () => {
         style={{ background: darkMode ? 'rgba(3,7,18,0.6)' : 'rgba(255,255,255,0.85)', backdropFilter: 'blur(4px)' }}
       />
       {page === 'home' && (
-        <main>
+        <main style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT} - ${FOOTER_HEIGHT})` }}>
           <Hero onScrollTo={handleScrollTo} />
           <Services />
           <WhyChooseUs onScrollTo={handleScrollTo} />
@@ -139,8 +143,16 @@ const App: React.FC = () => {
           <FaqCta onScrollTo={handleScrollTo} />
         </main>
       )}
-      {page === 'blog' && <BlogList onArticleClick={handleBlogClick} onBackClick={handleGoHome} />}
-      {page === 'blog-detail' && <BlogDetail slug={blogSlug} onBackClick={() => handleBlogClick()} onArticleClick={handleBlogClick} />}
+      {page === 'blog' && (
+        <div style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT} - ${FOOTER_HEIGHT})` }}>
+          <BlogList onArticleClick={handleBlogClick} onBackClick={handleGoHome} />
+        </div>
+      )}
+      {page === 'blog-detail' && (
+        <div style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT} - ${FOOTER_HEIGHT})` }}>
+          <BlogDetail slug={blogSlug} onBackClick={() => handleBlogClick()} onArticleClick={handleBlogClick} />
+        </div>
+      )}
       <Footer onScrollTo={handleScrollTo} onBlogClick={() => handleBlogClick()} />
     </div>
   );
