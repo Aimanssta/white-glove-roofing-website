@@ -2,7 +2,24 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 
-const DATA_PATH = path.join(__dirname, '..', 'public', 'data', 'reviews.json');
+// Resolve reviews.json path robustly (works locally and on Vercel serverless)
+const DATA_PATH_CANDIDATES = [
+  path.join(__dirname, '..', 'public', 'data', 'reviews.json'),
+  path.join(process.cwd(), 'public', 'data', 'reviews.json'),
+  path.join(__dirname, '..', '..', 'public', 'data', 'reviews.json')
+];
+
+function resolveDataPath() {
+  for (const p of DATA_PATH_CANDIDATES) {
+    try {
+      if (fs.existsSync(p)) return p;
+    } catch (e) {
+      // ignore
+    }
+  }
+  // fallback to first candidate
+  return DATA_PATH_CANDIDATES[0];
+}
 
 async function getFileFromGitHub(githubRepo, githubToken) {
   const url = `https://api.github.com/repos/${githubRepo}/contents/public/data/reviews.json?ref=main`;
@@ -43,7 +60,8 @@ async function updateFileOnGitHub(githubRepo, githubToken, contentBase64, sha, m
 module.exports = async (req, res) => {
   try {
     if (req.method === 'GET') {
-      // Serve the local file (fast, read-only)
+      // Serve the local file (fast, read-only). Try several candidate paths to be robust on Vercel.
+      const DATA_PATH = resolveDataPath();
       const raw = fs.readFileSync(DATA_PATH, 'utf8');
       res.setHeader('Content-Type', 'application/json');
       return res.status(200).send(raw);
