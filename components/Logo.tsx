@@ -3,14 +3,14 @@ import React from 'react';
 
 interface LogoProps {
   className?: string;
-  size?: 'sm' | 'md';
+  size?: 'sm' | 'md' | 'lg';
 }
 
 const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
-  const imageClasses = size === 'sm' ? 'w-10 h-10' : 'w-12 h-12';
-  const titleClasses = size === 'sm' ? 'text-base' : 'text-lg sm:text-xl';
-  const subtitleClasses = size === 'sm' ? 'text-sm' : 'text-base sm:text-lg';
-  const wrapperClasses = size === 'sm' ? 'gap-2' : 'gap-3';
+  const imageClasses = size === 'sm' ? 'w-10 h-10' : size === 'lg' ? 'w-16 h-16' : 'w-12 h-12';
+  const titleClasses = size === 'sm' ? 'text-base' : size === 'lg' ? 'text-2xl sm:text-3xl' : 'text-lg sm:text-xl';
+  const subtitleClasses = size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-lg sm:text-xl' : 'text-base sm:text-lg';
+  const wrapperClasses = size === 'sm' ? 'gap-2' : size === 'lg' ? 'gap-4' : 'gap-3';
 
   return (
     <div className={`flex items-center ${wrapperClasses} ${className}`}>
