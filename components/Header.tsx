@@ -62,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo, activeSection, darkMode, to
         </div>
         <div className="flex items-center justify-between py-1 sm:py-2">
           <button onClick={() => onScrollTo('top')} className="text-white">
-            <Logo size="lg" />
+            <Logo size="full" />
           </button>
           <nav>
             <ul className="hidden lg:flex gap-6 list-none text-sm">
