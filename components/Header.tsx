@@ -56,11 +56,11 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo, activeSection, darkMode, to
   return (
     <header className="sticky top-0 z-50 bg-primary-blue/95 backdrop-blur-md shadow-2xl dark:bg-dark-bg/95 dark:shadow-slate-900/50">
       <div className="container mx-auto px-5">
-        <div className="hidden sm:flex justify-end items-center text-xs text-blue-200 py-1 gap-3">
+        <div className="hidden sm:flex justify-end items-center text-xs text-blue-200 py-0.5 gap-3">
           <span>Licensed &amp; Insured Florida Roofing Contractor</span>
           <span>Emergency Storm Response • 24/7</span>
         </div>
-        <div className="flex items-center justify-between py-1 sm:py-2">
+        <div className="flex items-center justify-between py-1.5">
           <button onClick={() => onScrollTo('top')} className="text-white">
             <Logo size="full" />
           </button>
