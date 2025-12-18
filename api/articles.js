@@ -1,15 +1,18 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const DATA_PATH = path.join(__dirname, '..', 'public', 'data', 'articles.json');
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   try {
     const raw = fs.readFileSync(DATA_PATH, 'utf8');
     const articles = JSON.parse(raw);
 
     // GET /api/articles?slug=article-slug (single article)
-    if (req.query.slug) {
+    if (req.query && req.query.slug) {
       const article = articles.find(a => a.slug === req.query.slug);
       if (!article) {
         return res.status(404).json({ error: 'Article not found' });
@@ -18,21 +21,21 @@ module.exports = async (req, res) => {
     }
 
     // GET /api/articles?tag=tag-name (filter by tag)
-    if (req.query.tag) {
-      const filtered = articles.filter(a => a.tags.includes(req.query.tag));
+    if (req.query && req.query.tag) {
+      const filtered = articles.filter(a => Array.isArray(a.tags) && a.tags.includes(req.query.tag));
       return res.status(200).json(filtered);
     }
 
     // GET /api/articles?category=category-name (filter by category)
-    if (req.query.category) {
+    if (req.query && req.query.category) {
       const filtered = articles.filter(a => a.category === req.query.category);
       return res.status(200).json(filtered);
     }
 
     // GET /api/articles (all articles, optionally sorted)
-    const sortBy = req.query.sortBy || 'date'; // 'date', 'title'
-    const sortOrder = req.query.sortOrder || 'desc'; // 'asc', 'desc'
-    const limit = parseInt(req.query.limit) || 0; // 0 = no limit
+    const sortBy = (req.query && req.query.sortBy) || 'date'; // 'date', 'title'
+    const sortOrder = (req.query && req.query.sortOrder) || 'desc'; // 'asc', 'desc'
+    const limit = parseInt(req.query && req.query.limit) || 0; // 0 = no limit
 
     let sorted = [...articles];
     if (sortBy === 'date') {
@@ -50,4 +53,4 @@ module.exports = async (req, res) => {
     console.error(err);
     res.status(500).json({ error: String(err) });
   }
-};
+}

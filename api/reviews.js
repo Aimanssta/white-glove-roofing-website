@@ -1,6 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const fetch = require('node-fetch');
+import fs from 'fs';
+import path from 'path';
+import fetch from 'node-fetch';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Resolve reviews.json path robustly (works locally and on Vercel serverless)
 const DATA_PATH_CANDIDATES = [
@@ -57,7 +61,7 @@ async function updateFileOnGitHub(githubRepo, githubToken, contentBase64, sha, m
   return res.json();
 }
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   try {
     if (req.method === 'GET') {
       // Serve the local file (fast, read-only). Try several candidate paths to be robust on Vercel.
@@ -116,4 +120,4 @@ module.exports = async (req, res) => {
     console.error(err);
     res.status(500).json({ error: String(err) });
   }
-};
+}
